@@ -1,0 +1,50 @@
+.app {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.button {
+  flex: 1;
+  z-index: 99;
+}
+
+.transition-container {
+  flex: 1;
+}
+/*
+.example-enter {
+  transform: translateX(100%);
+}
+
+.example-enter.example-enter-active {
+  transform: translateX(0%);
+  transition: transform 5000ms ease-in;
+}
+
+.example-leave {
+  transform: translateX(0%);
+}
+
+.example-leave.example-leave-active {
+  transform: translateX(-1000px);
+  transition: opacity 5000ms ease-out;
+}*/
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 1000ms ease-in;
+}
