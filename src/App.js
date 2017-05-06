@@ -12,7 +12,7 @@ class App extends Component {
       currentPhoto: 0,
       intervalRef: '',
       maxPhotoIndex: 0,
-      direction: 1,
+      direction: 1
     };
   }
   componentDidMount() {
