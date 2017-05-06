@@ -1,50 +1,44 @@
-.app {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
+.container {
+  position: relative;
+  padding-left: 500px;
 }
 
-.button {
-  flex: 1;
-  z-index: 99;
+.container > img {
+  position: absolute;
 }
 
-.transition-container {
-  flex: 1;
-}
-/*
-.example-enter {
-  transform: translateX(100%);
+.transition-slide-right-enter {
+  transform: translate(500%);
 }
 
-.example-enter.example-enter-active {
-  transform: translateX(0%);
-  transition: transform 5000ms ease-in;
+.transition-slide-right-enter.transition-slide-right-enter-active {
+  transform: translate(0%);
+  transition: transform 700ms ease-in-out;
 }
 
-.example-leave {
-  transform: translateX(0%);
+.transition-slide-right-leave {
+  transform: translate(0%);
 }
 
-.example-leave.example-leave-active {
-  transform: translateX(-1000px);
-  transition: opacity 5000ms ease-out;
-}*/
-
-.example-enter {
-  opacity: 0.01;
+.transition-slide-right-leave.transition-slide-right-leave-active {
+  transition: transform 700ms ease-in-out;
+  transform: translate(-500%);
 }
 
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 1000ms ease-in;
+.transition-slide-left-enter {
+  transform: translate(-500%);
 }
 
-.example-leave {
-  opacity: 1;
+.transition-slide-left-enter.transition-slide-left-enter-active {
+  transform: translate(0%);
+  transition: transform 700ms ease-in-out;
 }
 
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 1000ms ease-in;
+.transition-slide-left-leave {
+  transform: translate(0%);
+}
+
+.transition-slide-left-leave.transition-slide-left-leave-active {
+  transition: transform 700ms ease-in-out;
+  transform: translate(500%);
 }

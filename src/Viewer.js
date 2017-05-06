@@ -9,9 +9,7 @@ export default class Viewer extends PureComponent {
   render() {
     const { urls } = this.props.data;
     return (
-      <div>
-        <img src={urls.regular} alt="main view" className="main-photo" />
-      </div>
+      <img src={urls.regular} alt="main view" className="main-photo" />
     );
   }
 }

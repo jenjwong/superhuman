@@ -12,6 +12,7 @@ class App extends Component {
       currentPhoto: 0,
       intervalRef: '',
       maxPhotoIndex: 0,
+      direction: 1,
     };
   }
   componentDidMount() {
@@ -23,7 +24,7 @@ class App extends Component {
     clearTimeout(this.state.intervalRef);
     const intervalRef = setInterval(() => {
       this._handleClick(1)
-    }, 2000);
+    }, 7000);
     this.setState({ intervalRef });
   }
 
@@ -41,7 +42,8 @@ class App extends Component {
   }
 
   _handleClick = (val) => {
-    if ((this.state.currentPhoto + (val)) <= this.state.maxPhotoIndex) {
+    this.setState({direction: val});
+    if ((this.state.currentPhoto + (val)) <= this.state.maxPhotoIndex && this.state.currentPhoto + (val) >= 0) {
       this.setState({currentPhoto: this.state.currentPhoto + (val)});
       if (this.state.photos.length - 2 === this.state.currentPhoto) {
         const pageNum = Math.floor((this.state.currentPhoto + 2) / 10) + 1;
@@ -52,18 +54,23 @@ class App extends Component {
   }
 
   render() {
+    let transiton;
+    this.state.direction > -1 ?  transiton = `transition-slide-right` :  transiton = `transition-slide-left`;
     return (
       <div className="app">
-        <button className="button" onClick={() => this._handleClick(-1)} name="increment">back</button>
+        <button className="button" onClick={() => this._handleClick(1)} name="decrement">forward</button>
         <div className="transition-container">
           <CSSTransitionGroup
-            transitionName="example"
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={1000}>
-            {this.state.photos.length > 0 && <Viewer key={this.state.currentPhoto} data={this.state.photos[this.state.currentPhoto]}/>}
+            component="div"
+            className="container"
+            transitionName={transiton}
+            transitionEnterTimeout={700}
+            transitionLeaveTimeout={700}>
+            {this.state.photos.length > 0 &&
+            <Viewer key={this.state.currentPhoto} data={this.state.photos[this.state.currentPhoto]}/> }
           </CSSTransitionGroup>
         </div>
-        <button className="button" onClick={() => this._handleClick(1)} name="decrement">forward</button>
+        <button className="button" onClick={() => this._handleClick(-1)} name="increment">back</button>
       </div>
     );
   }
